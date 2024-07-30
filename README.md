@@ -20,3 +20,5 @@ before:
 after:
 
   ![x](https://github.com/Noisec/pic-s/blob/main/images/derby-aft.png?raw=true)
+
+if you want to use it, just put its shortcut into shell:startup
