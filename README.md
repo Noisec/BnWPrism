@@ -5,7 +5,7 @@ As you may know, most of the latest viruses check for running debuggers, antivir
 Derby simulates these processes (or at least 91 of them) that can scare away viruses. When it is launched, it only uses 27.6MB of RAM.
 - Tested on random trojans and stealers found on the net, and it is working (most of the viruses stop execution after checking for debuggers).
 
-  ![x](https://github.com/Noisec/pic-s/blob/main/images/derby0.png?raw=true)
+![x](https://github.com/Noisec/pic-s/blob/main/images/derby0.png?raw=true)
 
 task manager:
 
