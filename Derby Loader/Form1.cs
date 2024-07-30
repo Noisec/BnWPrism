@@ -355,24 +355,24 @@ namespace Derby_Loader
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            File.WriteAllText("config.ini", "1");
+            if (checkBox1.Checked) { File.WriteAllText("config.ini", "1"); }
+            else { File.WriteAllText("config.ini", "0"); }
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Github page: https://github.com/Noisec/Derby <copied to clipboard>\nIf you check that one button, the next time you launch the app, it will not be visible and will auto start the simulation. To uncheck it, just delete the config.ini file.");
-            Clipboard.SetText("https://github.com/Noisec/Derby");
-        }
+      
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Github page: https://github.com/Noisec/Derby <copied to clipboard>\nIf you check that one button, the next time you launch the app, it will not be visible and will auto start the simulation. To uncheck it, just delete the config.ini file.");
+            Clipboard.SetText("https://github.com/Noisec/Derby");
+        
+    }
     }
 }
