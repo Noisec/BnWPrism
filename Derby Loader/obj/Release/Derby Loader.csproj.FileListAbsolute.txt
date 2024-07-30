@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\bin\Release\Derby Loader.exe.config
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\bin\Release\Derby Loader.exe
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\bin\Release\Derby Loader.pdb
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby_Loader.Form1.resources
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby_Loader.Properties.Resources.resources
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.exe
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.pdb
