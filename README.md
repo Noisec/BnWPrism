@@ -23,7 +23,7 @@ notes:
 
 (
 ```bash
-| no, i did not terminate the process with task manager on the \*after\* image
+| no, i did not terminate the process with task manager on the `after` image
 | the repo of derby.exe that gets cloned and launched with different names is found at https://github.com/Noisec/small_exe
 | old icon: Flaticon.com
 | yes, i have renamed it to BnWPrism)
