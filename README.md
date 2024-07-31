@@ -5,7 +5,7 @@
 
 [<kbd> <br> Download latest release <br> </kbd>][KBD]
 
-[KBD]: https://github.com/Noisec/BnWPrism/releases/download/1.1.1.3/BnWPrism.exe
+[KBD]: https://github.com/Noisec/BnWPrism/releases/download/1.1.1.5/BnWPrism.exe
 
 
 As you may know, most of the latest viruses check for running debuggers, antiviruses, and whether the machine is a VM or not.
