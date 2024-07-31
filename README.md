@@ -15,6 +15,8 @@ after:
 
   ![x](https://github.com/Noisec/pic-s/blob/main/images/derby-aft.png?raw=true)
 
+(no, i did not terminate the process)
+
 if you want to use it, just put its shortcut into shell:startup
 
 (the derby.exe that gets cloned and launched with different names is found at https://github.com/Noisec/small_exe)
