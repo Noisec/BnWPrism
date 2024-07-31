@@ -16,12 +16,14 @@ before:
 after:
 
   ![x](https://github.com/Noisec/pic-s/blob/main/images/derby-aft.png?raw=true)
+(
 
-<sup>(no, i did not terminate the process)</sup>
+<sup>| no, i did not terminate the process</sup>
 
+<sup>| the derby.exe that gets cloned and launched with different names is found at https://github.com/Noisec/small_exe</sup>
 
-<sup>(the derby.exe that gets cloned and launched with different names is found at https://github.com/Noisec/small_exe)</sup>
+<sup>| old icon: Flaticon.com</sup>
 
-<sup>old icon: Flaticon.com</sup>
+<sup>| yes, i have renamed it to BnWPrism)</sup>
 
-<sup>(yes, i have renamed it to BnWPrism)</sup>
+)
