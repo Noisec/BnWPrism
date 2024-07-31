@@ -24,4 +24,4 @@ after:
 
 <sup>old icon: Flaticon.com</sup>
 
-<sup>(Yes, I have renamed it to BnWPrism)</sup>
+<sup>(yes, i have renamed it to BnWPrism)</sup>
