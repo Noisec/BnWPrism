@@ -1,4 +1,4 @@
-# Derby
+# BnWPrism
 An antivirus 'simulator' that makes your PC look scary to viruses.
 
 As you may know, most of the latest viruses check for running debuggers, antiviruses, and whether the machine is a VM or not.
@@ -25,6 +25,7 @@ after:
 
 if you want to use it, just put its shortcut into shell:startup
 
-(the derbyx.exe that gets cloned and launched with different names is found at https://github.com/Noisec/small_exe)
+(the derby.exe that gets cloned and launched with different names is found at https://github.com/Noisec/small_exe)
 
-derby loader icon: Flaticon.com
+old icon: Flaticon.com
+- (Yes, I have renamed it to BnWPrism)
