@@ -20,6 +20,6 @@ after:
 if you want to use it, just put its shortcut into shell:startup
 
 (the derby.exe that gets cloned and launched with different names is found at https://github.com/Noisec/small_exe)
+<sup>old icon: Flaticon.com</sup>
 
-old icon: Flaticon.com
 - (Yes, I have renamed it to BnWPrism)
