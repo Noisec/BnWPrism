@@ -16,6 +16,8 @@ Derby simulates these processes (or at least 91 of them) that can scare away vir
 > If you want to use it, just put its shortcut into shell:startup and check the hidden launch option
 
 
+ ![x](https://github.com/Noisec/pic-s/blob/main/images/BnW1.png?raw=true)
+
 any.run test:
 
 before:
