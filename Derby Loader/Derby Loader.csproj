@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2BD3B14B-486B-4D74-9761-2EBD409CB993}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Derby_Loader</RootNamespace>
-    <AssemblyName>Derby Loader</AssemblyName>
+    <RootNamespace>BnWPrism</RootNamespace>
+    <AssemblyName>BnWPrism</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>download-removebg-preview.ico</ApplicationIcon>
+    <ApplicationIcon>output-onlinepngtools %281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -84,6 +84,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="output-onlinepngtools %281%29.ico" />
     <None Include="bin\Debug\Derby.exe" />
     <None Include="Derbyx.exe" />
     <Content Include="download-removebg-preview.ico" />

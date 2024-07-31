@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Derby Loader")]
-[assembly: AssemblyDescription("Derby Loader | * Made by Noiss")]
+[assembly: AssemblyTitle("BnWPrism")]
+[assembly: AssemblyDescription("BnWPrism | * Made by Noiss")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Derby Loader")]
+[assembly: AssemblyProduct("BnWPrism")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

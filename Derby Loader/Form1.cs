@@ -1,30 +1,124 @@
-﻿using Derby_Loader.Properties;
+﻿using BnWPrism.Properties;
+using Microsoft.Win32;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Derby_Loader
+// yes it has chatgpt written code 
+// BUT! it is working.
+
+namespace BnWPrism
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+
+            this.SetStyle(ControlStyles.Selectable, false);
+
+
+
+
+
+            trackBar1.PreviewKeyDown += TrackBar1_PreviewKeyDown;
+
+            Controls.Add(trackBar1);
+
+
+
         }
+
+
+
+        private void TrackBar1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+         
+            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+            {
+                e.IsInputKey = true;
+            }
+        }
+
+        protected override void OnEnter(EventArgs e)
+        {
+            base.OnEnter(e);
+            this.Invalidate();
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            base.OnLeave(e);
+            this.Invalidate(); 
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            if (this.Focused)
+            {
+                ControlPaint.DrawFocusRectangle(e.Graphics, this.ClientRectangle, this.ForeColor, this.BackColor);
+            }
+        }
+
+
+        protected override bool ShowFocusCues
+        {
+            get { return false; }
+        }
+
+        private IntPtr ControlWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
+        {
+            if (msg == NativeMethods.WM_SETFOCUS || msg == NativeMethods.WM_KILLFOCUS)
+            {
+             
+                return IntPtr.Zero;
+            }
+
+            return NativeMethods.DefWindowProc(hWnd, msg, wParam, lParam);
+        }
+
+        private static class NativeMethods
+        {
+            public const int GWL_WNDPROC = -4;
+            public const uint WM_SETFOCUS = 0x0007;
+            public const uint WM_KILLFOCUS = 0x0008;
+
+            [DllImport("user32.dll", SetLastError = true)]
+            public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+            [DllImport("user32.dll", SetLastError = true)]
+            public static extern IntPtr GetWindowLong(IntPtr hWnd, int nIndex);
+
+            [DllImport("user32.dll")]
+            public static extern IntPtr DefWindowProc(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+            public delegate IntPtr WindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
@@ -59,7 +153,41 @@ namespace Derby_Loader
 
             }
         }
-        string[] CHK = { "wrsa", "avgui", "nswscsvc", "avastui", "sophoshealth", "opssvc", "ollydbg", "pexplorer", "idag", "procanalyzer", "idag64", "processhacker", "idaq", "idaq64", "immunitydebugger", "tcpdump", "tcpview", "regshot", "dumpcap", "windbg", "wireshark", "Fiddler", "x64dbg", "x32dbg", "bdoesrv", "kavpf", "mantispm", "avengine", "fspex", "mcshld9x", "mgavrtcl", "avguard", "SavService", "coreServiceShell", "avgrsx", "avgwdsvc", "avgtray", "avpgui", "kavfs", "kavfsrcn", "kavtray", "360rp", "PccNTMon", "avp", "mcshield", "ashServ", "avgemc", "navapsvc", "avgagent", "f-agnt95", "f-prot", "kav", "nod32krn", "ccSvcHst", "SemSvc", "mctray", "MASVC", "bdagent", "avgcsrvx", "fssm32", "AvastSvc", "vsserv", "SysInspector", "ekrn", "ossec-agent", "osqueryd", "vmsrvc", "vmusrvc", "prl_cc", "prl_tools", "xenservice", "qemu-ga", "SbieCtrl", "joeboxserver", "joeboxcontrol", "sandboxierpcss", "tcpview", "autoruns", "autorunsc", "filemon", "procmon", "regmon", "procexp", "procexp64", "Procmon64", "VBoxService", "vboxtray", "vmtoolsd", "VBoxTray", "vmwareuser", "VGAuthService", "vmacthlp", "vm3dservice", "VBoxService" };
+        string[] CHK = {
+    "wrsa", "avgui", "nswscsvc", "avastui", "sophoshealth", "opssvc", "ollydbg",
+    "pexplorer", "idag", "procanalyzer", "idag64", "processhacker", "idaq",
+    "idaq64", "immunitydebugger", "tcpdump", "tcpview", "regshot", "dumpcap",
+    "windbg", "wireshark", "Fiddler", "x64dbg", "x32dbg", "bdoesrv", "kavpf",
+    "mantispm", "avengine", "fspex", "mcshld9x", "mgavrtcl", "avguard",
+    "SavService", "coreServiceShell", "avgrsx", "avgwdsvc", "avgtray", "avpgui",
+    "kavfs", "kavfsrcn", "kavtray", "360rp", "PccNTMon", "avp", "mcshield",
+    "ashServ", "avgemc", "navapsvc", "avgagent", "f-agnt95", "f-prot", "kav",
+    "nod32krn", "ccSvcHst", "SemSvc", "mctray", "MASVC", "bdagent", "avgcsrvx",
+    "fssm32", "AvastSvc", "vsserv", "SysInspector", "ekrn", "ossec-agent",
+    "osqueryd", "vmsrvc", "vmusrvc", "prl_cc", "prl_tools", "xenservice",
+    "qemu-ga", "SbieCtrl", "joeboxserver", "joeboxcontrol", "sandboxierpcss",
+    "autoruns", "autorunsc", "filemon", "procmon", "regmon", "procexp",
+    "procexp64", "Procmon64", "VBoxService", "vboxtray", "vmtoolsd", "vmwareuser",
+    "VGAuthService", "vmacthlp", "vm3dservice",
+    "smss",    
+    "sfc",    
+    "tsapphost",
+    "sfc_os",  
+    "nortonsecurity", 
+    "nissrv",   
+    "ccevtmgr", 
+    "mcupdate",
+    "sophosui",
+    "avp",     
+    "sbiedll.dll", 
+    "webroot", 
+    "bdagent", 
+    "avpui",  
+    "wpaserv", 
+    "sosvc",   
+    "mcafeeui", 
+    "clamd"    
+};
 
         private static List<Process> childProcesses = new List<Process>();
 
@@ -68,7 +196,74 @@ namespace Derby_Loader
 
 
 
-
+        string[] registryKeys = new string[]
+        {
+            @"HKLM\SYSTEM\CurrentControlSet\Control\VirtualDeviceDrivers",
+            @"HKLM\SOFTWARE\Wine",
+            @"HKLM\HARDWARE\ACPI\DSDT\PRLS__",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_1AB8&DEV_4000&SUBSYS_04001AB8&REV_00",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_1AB8&DEV_4006&SUBSYS_04061AB8&REV_00",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_1AB8&DEV_4005&SUBSYS_04001AB8&REV_00",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_5333&DEV_8811&SUBSYS_00000000&REV_00",
+            @"HKLM\SOFTWARE\VMware, Inc.",
+            @"HKLM\SOFTWARE\VMware, Inc.\VMware Tools",
+            @"HKLM\SOFTWARE\VMWare\VMTools",
+            @"HKLM\HARDWARE\ACPI\DSDT\PTLTD_",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\SCSI\VMware",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VMware",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vmci",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vmhgfs",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vmmouse",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vmvss",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vmusbmouse",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vmxnet",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VMTools",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VMMEMCTL",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VGAuthService",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vm3dmp",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\vmrawdsk",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\vmmouse",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\VMMemCtl",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\vmci",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\vmhgfs",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\vmrawdsk",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\VMTools",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\vmusbmouse",
+            @"HKLM\SYSTEM\CurrentControlSet001\Services\VGAuthService",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_15AD&DEV_0405&SUBSYS_040515AD&REV_00",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_15AD&DEV_0740&SUBSYS_074015AD&REV_10",
+            @"HKLM\HARDWARE\ACPI\DSDT\VBOX__\VBOXBIOS",
+            @"HKLM\HARDWARE\ACPI\FADT\VBOX__\VBOXFACP",
+            @"HKLM\HARDWARE\ACPI\RSDT\VBOX__\VBOXXSDT",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_80EE&DEV_CAFE&SUBSYS_00000000&REV_00",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_80EE&DEV_BEEF&SUBSYS_040515AD&REV_00",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\IDE\DiskVBOX_HARDDISK___________________________1.0_____",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\IDE\CdRomVBOX_CD-ROM_____________________________1.0_____",
+            @"HKLM\SYSTEM\ControlSet001\Enum\IDE\DiskVBOX_HARDDISK___________________________1.0_____",
+            @"HKLM\SYSTEM\ControlSet001\Enum\IDE\CdRomVBOX_CD-ROM_____________________________1.0_____",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VBox",
+            @"HKLM\SOFTWARE\Oracle\VirtualBox Guest Additions",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VBoxGuest",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VBoxMouse",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VBoxSF",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VBoxService",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\VBoxVideo",
+            @"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\VBoxOGL",
+            @"HKLM\SYSTEM\ControlSet001\Services\VBoxGuest",
+            @"HKLM\SYSTEM\ControlSet001\Services\VBoxMouse",
+            @"HKLM\SYSTEM\ControlSet001\Services\VBoxService",
+            @"HKLM\SYSTEM\ControlSet001\Services\VBoxSF",
+            @"HKLM\SYSTEM\ControlSet001\Services\VBoxVideo",
+            @"HKLM\SOFTWARE\Classes\QGAVSSProvider",
+            @"HKLM\SOFTWARE\Wow6432Node\RedHat\RHEL\Tools\QemuGA",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\QEMU Guest Agent VSS Provider",
+            @"HKLM\SYSTEM\CurrentControlSet\Services\QEMU-GA",
+            @"HKLM\HARDWARE\ACPI\DSDT\BOCHS_\BXPCDSDT",
+            @"HKLM\HARDWARE\ACPI\FADT\BOCHS_\BXPCDSDT",
+            @"HKLM\HARDWARE\ACPI\RSDT\BOCHS_\BXPCDSDT",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_1AF4&DEV_1003&SUBSYS_00031AF4&REV_00",
+            @"HKLM\SYSTEM\CurrentControlSet\Enum\PCI\VEN_1AF4&DEV_1004&SUBSYS_00081AF4&REV_00"
+        };
 
 
 
@@ -273,7 +468,8 @@ namespace Derby_Loader
                 cmdx($"TASKKILL /F /IM {item}.exe");
             }
 
-            Application.Exit();
+            timer1.Stop();
+            
         }
 
 
@@ -312,8 +508,9 @@ namespace Derby_Loader
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            lostProcesses.Clear();
             sim();
+            timer1.Start();
         }
 
         private void sim()
@@ -370,9 +567,144 @@ namespace Derby_Loader
 
         private void label1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Github page: https://github.com/Noisec/Derby <copied to clipboard>\nIf you check that one button, the next time you launch the app, it will not be visible and will auto start the simulation. To uncheck it, just delete the config.ini file.");
+            MessageBox.Show("Github page: https://github.com/Noisec/Derby <copied to clipboard>\n| Checkbox: If you check that one button, the next time you launch the app, it will not be visible and will auto start the simulation. To uncheck it, just delete the config.ini file.\n| Trackbar: It controls the frequency of the process checking (to see if a simulated process has stopped running | min:1sec max:60sec).\n| Register button: It creates registry keys that only virtual machines have.\n| Unregister button: It deletes those keys.");
             Clipboard.SetText("https://github.com/Noisec/Derby");
         
     }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            foreach (var key in registryKeys)
+            {
+                try
+                {
+                    CreateRegistryKey(key);
+                    Console.WriteLine($"Registry key created: {key}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error creating registry key {key}: {ex.Message}");
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            foreach (var key in registryKeys)
+            {
+                try
+                {
+                    DeleteRegistryKey(key);
+                    Console.WriteLine($"Registry key deleted: {key}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting registry key {key}: {ex.Message}");
+                }
+            }
+        }
+
+
+
+
+
+
+        static void CreateRegistryKey(string keyPath)
+        {
+            using (RegistryKey key = Registry.LocalMachine.CreateSubKey(keyPath))
+            {
+             
+            }
+        }
+
+        static void DeleteRegistryKey(string keyPath)
+        {
+            try
+            {
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyPath, RegistryKeyPermissionCheck.ReadWriteSubTree))
+                {
+                    if (key != null)
+                    {
+                        string[] subKeyNames = key.GetSubKeyNames();
+
+                        foreach (string subKeyName in subKeyNames)
+                        {
+                            DeleteRegistryKey($"{keyPath}\\{subKeyName}");
+                        }
+
+                    
+                        key.Close();
+                        Registry.LocalMachine.DeleteSubKeyTree(keyPath, false);
+                        Console.WriteLine($"Successfully deleted: {keyPath}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Key not found: {keyPath}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting registry key {keyPath}: {ex.Message}");
+            }
+
+        }
+        static string[] GetNonRunningProcesses(string[] processNames)
+        {
+            Process[] runningProcesses = Process.GetProcesses();
+            string[] nonRunningProcesses = processNames.Where(processName =>
+                !runningProcesses.Any(p => string.Equals(p.ProcessName, processName, StringComparison.OrdinalIgnoreCase))
+            ).ToArray();
+            return nonRunningProcesses;
+        }
+
+
+        private static HashSet<string> lostProcesses = new HashSet<string>();
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string a = "";
+            string[] processNamesToCheck = CHK
+                .Except(lostProcesses)
+                .ToArray();
+
+            string[] nonRunningProcesses = GetNonRunningProcesses(processNamesToCheck);
+
+          
+            lostProcesses.UnionWith(nonRunningProcesses);
+
+            if (nonRunningProcesses.Length > 0)
+            {
+                foreach (string processName in nonRunningProcesses)
+                {
+                    a += $"{processName}.exe ";
+                }
+                MessageBox.Show($"Warning! {nonRunningProcesses.Length} simulation process{(nonRunningProcesses.Length > 1 ? "es have" : " has")} stopped running!\nList: {string.Join(", ", nonRunningProcesses)}");
+
+            }
+            else
+            {
+                Console.WriteLine("All specified processes are running.");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            timer1.Interval = trackBar1.Value*1000;
+        }
     }
 }
