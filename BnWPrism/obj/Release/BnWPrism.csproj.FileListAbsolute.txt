@@ -1,0 +1,11 @@
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\bin\Release\BnWPrism.exe.config
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\bin\Release\BnWPrism.exe
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\bin\Release\BnWPrism.pdb
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.Form1.resources
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.Form2.resources
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.Properties.Resources.resources
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.exe
+C:\Users\Admin\source\repos\BnWPrism\BnWPrism\obj\Release\BnWPrism.pdb

@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\Derby Loader.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\BnWPrism.Form1.resources
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\BnWPrism.Properties.Resources.resources
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\bin\Release\BnWPrism.exe.config
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\bin\Release\BnWPrism.exe
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\bin\Release\BnWPrism.pdb
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\BnWPrism.exe
+C:\Users\Admin\source\repos\Derby Loader\Derby Loader\obj\Release\BnWPrism.pdb
