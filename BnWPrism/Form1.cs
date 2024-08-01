@@ -1,4 +1,6 @@
-﻿using BnWPrism.Properties;
+﻿
+using System.Management;
+using BnWPrism.Properties;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,7 @@ using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Threading;
 
 // yes it has chatgpt written code in it,
 // BUT! it is working.
@@ -32,7 +35,6 @@ namespace BnWPrism
 
 
 
-        
 
 
 
@@ -42,7 +44,8 @@ namespace BnWPrism
 
 
 
-        InitializeComponent();
+
+            InitializeComponent();
 
             this.SetStyle(ControlStyles.Selectable, false);
 
@@ -63,7 +66,7 @@ namespace BnWPrism
             Controls.Add(trackBar1);
 
 
-          
+
 
 
 
@@ -72,9 +75,9 @@ namespace BnWPrism
 
             this.Cursor = customCursor;
 
-             SetCursorForAllControls(this, customCursor);
+            SetCursorForAllControls(this, customCursor);
 
-          
+
             AttachMouseEvents(this);
 
 
@@ -135,7 +138,7 @@ namespace BnWPrism
 
         private void TrackBar1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-         
+
             if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
                 e.IsInputKey = true;
@@ -151,7 +154,7 @@ namespace BnWPrism
         protected override void OnLeave(EventArgs e)
         {
             base.OnLeave(e);
-            this.Invalidate(); 
+            this.Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -169,9 +172,13 @@ namespace BnWPrism
             get { return false; }
         }
 
-       
+
         private static class NativeMethods
+
         {
+            [System.Runtime.InteropServices.DllImport("psapi.dll")]
+            public static extern bool EmptyWorkingSet(IntPtr hProcess);
+
             public const int GWL_WNDPROC = -4;
             public const uint WM_SETFOCUS = 0x0007;
             public const uint WM_KILLFOCUS = 0x0008;
@@ -202,9 +209,13 @@ namespace BnWPrism
 
 
 
+        [DllImport("kernel32.dll")]
+        public static extern bool SetProcessWorkingSetSize(IntPtr process, int minimumWorkingSetSize, int maximumWorkingSetSize);
 
 
-     
+
+
+
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
@@ -212,7 +223,7 @@ namespace BnWPrism
         {
             if (!File.Exists("config.ini"))
             {
-               
+
                 File.WriteAllText("config.ini", "0");
                 Opacity = 1;
                 ShowInTaskbar = true;
@@ -226,15 +237,94 @@ namespace BnWPrism
                 }
                 else { sim(); }
 
-              
-                
+
+
 
 
 
 
 
             }
+
+
+
+
+            cleanse();
+
+
+
+
+
+
+
+
         }
+
+
+        private void cleanse()
+        {
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            try
+            {
+                ManagementScope scope = new ManagementScope("\\\\.\\ROOT\\CIMv2");
+                ObjectQuery query = new ObjectQuery("Win32_OperatingSystem");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query);
+
+                foreach (ManagementObject obj in searcher.Get())
+                {
+                    obj.InvokeMethod("FreeCache", null);
+                }
+
+                Console.WriteLine("Memory Cleared Successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+
+            Process[] processes = Process.GetProcesses();
+
+            foreach (Process p in processes)
+            {
+                try
+                {
+                    NativeMethods.EmptyWorkingSet(p.Handle);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+
+            try
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                {
+                    SetProcessWorkingSetSize(Process.GetCurrentProcess().Handle, -1, -1);
+                    foreach (Process p in Process.GetProcesses())
+                    {
+                        Process[] myProcesses = Process.GetProcessesByName(p.ProcessName);
+
+                        foreach (Process myProcess in myProcesses)
+                        {
+                            SetProcessWorkingSetSize(myProcess.Handle, -1, -1);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+
         string[] CHK = {
     "wrsa", "avgui", "nswscsvc", "avastui", "sophoshealth", "opssvc", "ollydbg",
     "pexplorer", "idag", "procanalyzer", "idag64", "processhacker", "idaq",
@@ -542,12 +632,29 @@ namespace BnWPrism
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-
-            foreach (var item in CHK)
+            foreach (string processName in CHK)
             {
-                cmdx($"TASKKILL /F /IM {item}.exe");
+                try
+                {
+                    Process[] processes = Process.GetProcessesByName(processName);
+
+                    foreach (Process process in processes)
+                    {
+                        process.Kill(); 
+                        process.WaitForExit();
+                     }
+
+                    if (processes.Length == 0)
+                    {
+                      }
+                }
+                catch (Exception ex)
+                {
+                 }
             }
+
+
+           
 
             timer1.Stop();
             
@@ -584,14 +691,14 @@ namespace BnWPrism
         }
 
 
-        [DllImport("kernel32.dll")]
-        private static extern bool SetProcessWorkingSetSize(IntPtr process, int minSize, int maxSize);
 
         private void button1_Click(object sender, EventArgs e)
         {
             lostProcesses.Clear();
             sim();
             timer1.Start();
+            Thread.Sleep(100);
+            cleanse();
         }
 
         private void sim()
@@ -785,234 +892,9 @@ namespace BnWPrism
             f2.ShowDialog();   
         }
 
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
     }
 }
