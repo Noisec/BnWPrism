@@ -4,23 +4,45 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
-// yes it has chatgpt written code 
+// yes it has chatgpt written code in it,
 // BUT! it is working.
 
 namespace BnWPrism
 {
     public partial class Form1 : Form
     {
+
+        private bool isDragging = false;
+        private Point startPoint = new Point(0, 0);
+        private TrackBar trackBar;
+
+
         public Form1()
         {
-            InitializeComponent();
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+        InitializeComponent();
 
             this.SetStyle(ControlStyles.Selectable, false);
 
@@ -41,8 +63,73 @@ namespace BnWPrism
             Controls.Add(trackBar1);
 
 
+          
+
+
+
+
+            Cursor customCursor = new Cursor(new MemoryStream(Properties.Resources.Windows_XP_3D_Black_Normal));
+
+            this.Cursor = customCursor;
+
+             SetCursorForAllControls(this, customCursor);
+
+          
+            AttachMouseEvents(this);
+
+
+
+
+
+
+
 
         }
+
+        private void SetCursorForAllControls(Control parent, Cursor cursor)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                control.Cursor = cursor;
+                SetCursorForAllControls(control, cursor);
+            }
+        }
+        private void AttachMouseEvents(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (!(control is TrackBar))
+                {
+                    control.MouseDown += Control_MouseDown;
+                    control.MouseMove += Control_MouseMove;
+                    control.MouseUp += Control_MouseUp;
+                }
+                AttachMouseEvents(control);
+            }
+        }
+        private void Control_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                startPoint = new Point(e.X, e.Y);
+            }
+        }
+
+        private void Control_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - startPoint.X, p.Y - startPoint.Y);
+            }
+        }
+
+        private void Control_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
+        }
+
 
 
 
@@ -82,17 +169,7 @@ namespace BnWPrism
             get { return false; }
         }
 
-        private IntPtr ControlWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
-        {
-            if (msg == NativeMethods.WM_SETFOCUS || msg == NativeMethods.WM_KILLFOCUS)
-            {
-             
-                return IntPtr.Zero;
-            }
-
-            return NativeMethods.DefWindowProc(hWnd, msg, wParam, lParam);
-        }
-
+       
         private static class NativeMethods
         {
             public const int GWL_WNDPROC = -4;
@@ -127,13 +204,7 @@ namespace BnWPrism
 
 
 
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            if (m.Msg == WM_NCHITTEST)
-                m.Result = (IntPtr)(HT_CAPTION);
-        }
-
+     
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
@@ -154,6 +225,9 @@ namespace BnWPrism
                     ShowInTaskbar = true;
                 }
                 else { sim(); }
+
+              
+                
 
 
 
@@ -310,7 +384,6 @@ namespace BnWPrism
         }
 
 
-        // Import the required native Windows APIs
         [DllImport("kernel32.dll")]
 
         static extern bool SuspendThread(IntPtr hThread);
@@ -686,8 +759,8 @@ namespace BnWPrism
                 Console.WriteLine("All specified processes are running.");
             }
 
-
-
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
 
 
 
@@ -711,5 +784,235 @@ namespace BnWPrism
             Form f2 = new Form2();
             f2.ShowDialog();   
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -61,6 +61,16 @@ namespace BnWPrism.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon bg_aero_normal {
+            get {
+                object obj = ResourceManager.GetObject("bg_aero_normal", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap dc2 {
@@ -76,6 +86,26 @@ namespace BnWPrism.Properties {
         internal static byte[] Derbyx {
             get {
                 object obj = ResourceManager.GetObject("Derbyx", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] white_n_black {
+            get {
+                object obj = ResourceManager.GetObject("white_n_black", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Windows_XP_3D_Black_Normal {
+            get {
+                object obj = ResourceManager.GetObject("Windows_XP_3D_Black_Normal", resourceCulture);
                 return ((byte[])(obj));
             }
         }

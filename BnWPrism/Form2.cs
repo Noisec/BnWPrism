@@ -16,6 +16,11 @@ namespace BnWPrism
 {
     public partial class Form2 : Form
     {
+
+        private bool isDragging = false;
+        private Point startPoint = new Point(0, 0);
+        private RichTextBox richTextBox;
+
         public Form2()
         {
             InitializeComponent();
@@ -30,37 +35,67 @@ namespace BnWPrism
             toolTip1.ReshowDelay = 500;
             toolTip1.ShowAlways = true;
 
-            // Set up the ToolTip text for the Button and Checkbox.
             toolTip1.SetToolTip(this.pictureBox1, "For suggestions and questions");
-           
 
 
+            Cursor customCursor = new Cursor(new MemoryStream(Properties.Resources.Windows_XP_3D_Black_Normal));
+
+            this.Cursor = customCursor;
+
+            SetCursorForAllControls(this, customCursor);
+
+
+            AttachMouseEvents(this);
         }
 
 
-        protected override void WndProc(ref Message m)
+        private void SetCursorForAllControls(Control parent, Cursor cursor)
         {
-            base.WndProc(ref m);
-            if (m.Msg == WM_NCHITTEST)
-                m.Result = (IntPtr)(HT_CAPTION);
-        }
-
-        private const int WM_NCHITTEST = 0x84;
-        private const int HT_CLIENT = 0x1;
-        private const int HT_CAPTION = 0x2;
-
-
-        private IntPtr ControlWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
-        {
-            if (msg == NativeMethods.WM_SETFOCUS || msg == NativeMethods.WM_KILLFOCUS)
+            foreach (Control control in parent.Controls)
             {
-
-                return IntPtr.Zero;
+                control.Cursor = cursor;
+                SetCursorForAllControls(control, cursor);
             }
-
-            return NativeMethods.DefWindowProc(hWnd, msg, wParam, lParam);
+        }
+        private void AttachMouseEvents(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (!(control is RichTextBox))
+                {
+                    control.MouseDown += Control_MouseDown;
+                    control.MouseMove += Control_MouseMove;
+                    control.MouseUp += Control_MouseUp;
+                }
+                AttachMouseEvents(control);
+            }
+        }
+        private void Control_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                startPoint = new Point(e.X, e.Y);
+            }
         }
 
+        private void Control_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - startPoint.X, p.Y - startPoint.Y);
+            }
+        }
+
+        private void Control_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
+        }
+
+
+
+       
         private static class NativeMethods
         {
             public const int GWL_WNDPROC = -4;
