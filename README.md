@@ -9,7 +9,7 @@
 
 
 As you may know, most of the latest viruses check for running debuggers, antiviruses, and whether the machine is a VM or not.
-Derby simulates these processes (or at least 106 of them) that can scare away viruses. When it is launched, it only uses 33.3MB of RAM.
+Derby simulates these processes (or at least 106 of them) that can scare away viruses. When it is launched, it only uses 4-7MB of RAM.
 - Tested on random trojans and stealers found on the net, and it is working (most of the viruses stop execution after checking for debuggers).
 
 > [!TIP]
