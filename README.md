@@ -5,7 +5,7 @@
 
 [<kbd> <br> Download latest release <br> </kbd>][KBD]
 
-[KBD]: https://github.com/Noisec/BnWPrism/releases/download/1.1.1.6/BnWPrism.exe
+[KBD]: https://github.com/Noisec/BnWPrism/releases/download/1.1.1.7/BnWPrism.exe
 
 
 As you may know, most of the latest viruses check for running debuggers, antiviruses, and whether the machine is a VM or not.
@@ -13,7 +13,7 @@ BnWPrism simulates these processes (or at least 106 of them) that can scare away
 - Tested on random trojans and stealers found on the net, and it is working (most of the viruses stop execution after checking for debuggers).
 
 > [!TIP]
-> If you want to use it, just put its shortcut into shell:startup and check the hidden launch option
+> Click the Register button to achieve better detection rates
 
 
  ![x](https://github.com/Noisec/pic-s/blob/main/images/BnW1.png?raw=true)
