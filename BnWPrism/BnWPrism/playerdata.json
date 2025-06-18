@@ -1,0 +1,278 @@
+{
+	"EulaAgreement":	false,
+	"act4UserAgreement":	false,
+	"NewsReadIds":	["ContentPatch1", "ContentPatch2"],
+	"AccountCosmeticInventory":	{
+		"CosmeticColorsUnlocked":	{
+			"version"
+	"SoftcoreStandard":	{
+		"CompletedStory":	false,
+		"ExpeditionsMaxLevelReached":	0,
+		"CityBuilding":	{
+			"FinishedTurns":	0,
+			"FinishedProjects":	[],
+			"OngoingProjects":	[],
+			"OngoingEventProjects":	[],
+			"Upgrades":	[],
+		"CosmeticColorsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000000002000008000000000000000000000000000000000000000000"
+		},
+		"CosmeticWeaponsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000100000d03b100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+		},
+		"CosmeticArmorsUnlocked":	{
+			"PendingRewards":	[],
+			"RewardInstances":	[],
+			"RolledProjects":	[],
+			"PendingEvents":	[],
+			"TurnsUntilNextNarrativeEventRoll":	0,
+			"TimedProductionFactors":	[],
+			"NETypeCooldowns":	[],
+			"NECooldowns":	[],
+			"CECooldowns":	[],
+			"TurnsUntilNextCourierEventRoll":	0
+		},
+		"ExpeditionMap":	{
+			"v":	7,
+			"lvl":	10,
+			"dif":	-1,
+			"cur":	"0",
+		"CosmeticColorsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000000002000008000000000000000000000000000000000000000000"
+		},
+		"CosmeticWeaponsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000100000d03b100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+		},
+		"CosmeticArmorsUnlocked":	{
+			"sco":	"0",
+			"lvl_ls":	10,
+			"sco_ls":	"0",
+			"gen":	1,
+			"csn":	"CS_WarMap_CP4",
+			"cst":	{
+				"v":	0,
+				"p":	[],
+				"u":	[{
+						"s":	"npc2",
+						"d":	1
+					}, {
+						"s":	"escort",
+						"d":	2
+					}, {
+					
+		"CosmeticColorsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000000002000008000000000000000000000000000000000000000000"
+		},
+		"CosmeticWeaponsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000100000d03b100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+		},
+		"CosmeticArmorsUnlocked":	{	"s":	"hard",
+						"d":	2
+					}, {
+						"s":	"kill_arena",
+						"d":	3
+					}, {
+						"s":	"easy",
+						"d":	3
+					}]
+			},
+			"act":	{
+				"v":	0,
+				"a":	[{
+						"v":	0,
+						"a":	"NPC2",
+						"u":	[{
+								"s":	"otw",
+					
+		"CosmeticColorsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000000002000008000000000000000000000000000000000000000000"
+		},
+		"CosmeticWeaponsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000100000d03b100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+		},
+		"CosmeticArmorsUnlocked":	{			"d":	1
+							}, {
+								"s":	"archi_swamp",
+								"d":	1
+							}, {
+								"s":	"otwsbw",
+								"d":	4
+							}, {
+								"s":	"svri",
+								"d":	2
+							}, {
+								"s":	"archi_necropolis",
+								"d":	2
+							}, {
+								"s":	"svrif",
+								"d":	5
+							}, {
+					
+		"CosmeticColorsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000000002000008000000000000000000000000000000000000000000"
+		},
+		"CosmeticWeaponsUnlocked":	{
+			"version":	0,
+			"bitmask":	"0000000000100000d03b100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+		},
+		"CosmeticArmorsUnlocked":	{			"s":	"rep",
+								"d":	3
+							}, {
+								"s":	"lambach_arena",
+								"d":	3
+							}, {
+								"s":	"repu",
+								"d":	6
+							}]
+					}]
+			},
+			"ins":	{
+				"v":	0,
+				"ins":	[{
+						"v":	1,
+						"gen":	1,
+						"csn":	"CS_WarMap_CP4",
+						"csi":	2,
+						"dqn":	"Quest_CP4_Dummy_Expedition",
+						"gtb":	true,
+						"flo":	[{
+								"v":	0,
+								"s":	"CG_EG_NPC2",
+								"a":	2,
+								"l":	18,
+								"q":	7,
+								"m":	2,
+								"e":	59
+							}],
+						"uaf":	1,
+						"ari":	22,
+						"fir":	"rare",
+						"fig":	"MISSION_3",
+						"lan":	"LANE_3",
+						"bio":	"OUTW",
+						"dif":	"hard",
+						"rar":	false,
+						"lrx":	21,
+						"lry":	22
+					}, {
+						"v":	1,
+						"gen":	1,
+						"csn":	"CS_WarMap_CP4",
+						"csi":	15,
+						"dqn":	"Quest_CP4_Dummy_Expedition",
+						"gtb":	true,
+						"flo":	[{
+								"v":	0,
+								"s":	"CG_EG_WM1",
+								"a":	17,
+								"l":	30,
+								"q":	77,
+								"m":	17,
+								"e":	31
+							}],
+						"uaf":	1,
+						"ari":	0,
+						"fir":	"rare",
+						"fig":	"MISSION_2",
+						"lan":	"LANE_2",
+						"bio":	"SVRI",
+						"dif":	"hard",
+						"rar":	false,
+						"lrx":	93,
+						"lry":	76
+					}, {
+						"v":	1,
+						"gen":	1,
+						"csn":	"CS_WarMap_CP4",
+						"csi":	5,
+						"dqn":	"Quest_CP4_Dummy_Expedition",
+						"gtb":	true,
+						"flo":	[{
+								"v":	0,
+								"s":	"CG_EG_WM_Arena",
+								"a":	12,
+								"l":	0,
+								"q":	5,
+								"m":	13,
+								"e":	-1
+							}],
+						"uaf":	1,
+						"ari":	20,
+						"fir":	"rare",
+						"fig":	"MISSION_1",
+						"lan":	"LANE_1",
+						"bio":	"REPU",
+						"dif":	"easy",
+						"rar":	false,
+						"lrx":	77,
+						"lry":	5
+					}]
+			}
+		},
+		"QuestProgression":	{
+			"QuestId":	"",
+			"StepId":	-1,
+			"State":	"Failed"
+		}
+	},
+	"SoftcoreSeason":	{
+		"CompletedStory":	false,
+		"ExpeditionsMaxLevelReached":	0,
+		"CityBuilding":	{
+			"FinishedTurns":	0,
+			"FinishedProjects":	[],
+			"OngoingProjects":	[],
+			"OngoingEventProjects":	[],
+			"Upgrades":	[],
+			"PendingRewards":	[],
+			"RewardInstances":	[],
+			"RolledProjects":	[],
+			"PendingEvents":	[],
+			"TurnsUntilNextNarrativeEventRoll":	0,
+			"TimedProductionFactors":	[],
+			"NETypeCooldowns":	[],
+			"NECooldowns":	[],
+			"CECooldowns":	[],
+			"TurnsUntilNextCourierEventRoll":	0
+		},
+		"ExpeditionMap":	{
+			"v":	7,
+			"lvl":	0,
+			"dif":	-1,
+			"cur":	"0",
+			"sco":	"0",
+			"lvl_ls":	-1,
+			"sco_ls":	"0",
+			"gen":	0,
+			"csn":	"",
+			"cst":	{
+				"v":	0,
+				"p":	[],
+				"u":	[]
+			},
+			"act":	{
+				"v":	0,
+				"a":	[]
+			},
+			"ins":	{
+				"v":	0,
+				"ins":	[]
+			}
+		},
+		"QuestProgression":	{
+			"QuestId":	"",
+			"StepId":	-1,
+			"State":	"Failed"
+		}
+	},
+	"offlineAccount":	false
+}
